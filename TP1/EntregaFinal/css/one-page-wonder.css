@@ -1,0 +1,101 @@
+body {
+    margin-top: 50px;
+    background-color: black;
+    color: #d7d7d7;
+}
+
+.header-image {
+    display: inherit;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: url('../images/fondo.jpg') no-repeat center center scroll;
+    background-size: cover;
+    background-color: transparent;
+}
+.row {
+  margin-top: 10px;
+}
+nav {
+  font-size: 20px;
+}
+img.media-object {
+  width: 200px;
+  height: 200px;
+}
+
+.media {
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  font-family: "Arial Unicode MS";
+  padding: 5px;
+}
+.media p {
+  text-align: justify;
+}
+.media h3{
+  margin-top: 5px;
+  font-family: "Aharoni";
+}
+.headline {
+    padding: 189px 0;
+}
+
+.headlinee {
+    padding: 15px 0;
+}
+.btn{
+  font-size: 15px ;
+  width: 300px;
+  height: 30px;
+}
+.headline h1 {
+    font-size: 130px;
+    background: white;
+}
+
+.headline h2 {
+    font-size: 77px;
+    background: white;
+}
+.list-group-item{
+  color : black;
+}
+.titulo{
+  color : black;
+}
+
+.myButton{ 
+    position:absolute; 
+    width:100%; left:0;
+    text-align:center;
+    margin:auto;
+    background-color:#101010;
+    border-radius:5px;
+  border:1px solid black;
+  display:inline-block;
+  cursor:pointer;
+  color:#9d9d9d;
+  font-family:Arial;
+  font-size:20px;
+  font-weight:bold;
+  padding:11px 23px;
+  text-decoration:none;
+  text-shadow:0px -1px 0px #2b665e;
+ }
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+
+footer {
+      background-color: #222;
+      padding-left: 5px;
+}
+
+.tabla{
+  vertical-align: center;
+  height: 20px;
+  width: 20px;
+}

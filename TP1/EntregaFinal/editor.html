@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Editor de Fotos</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/one-page-wonder.css" rel="stylesheet">
+</head>
+<canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Ver menú</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="Template.html">Inicio <span class="sr-only">(actual)</span></a></li>
+          <li><a href="editor.html">Editor <span class="sr-only">(actual)</span></a></li>
+          
+        </ul>
+        <ul class="nav navbar-nav navbar-right iconos">
+          <li><a href="https://www.facebook.com/" target="_blank"><img alt="siguenos en facebook" src="images/iconos/iconoface.png" title="siguenos en facebook" /></a></li>
+          <li><a href="https://plus.google.com/" target="_blank"><img alt="siguenos en Google+" src="images/iconos/iconogoogle+.png" title="siguenos en Google+" /></a></li>
+          <li><a href="https://twitter.com/" target="_blank"><img alt="siguenos en Twitter" src="images/iconos/iconotwitter.png" title="siguenos en Twitter" /></a></li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="headlinee">
+        <div class="container">
+      </div>
+    </div>
+  <table class="table tabla">
+    <thead>
+      <tr>
+        <th>Estilos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+        	<button type="button" class="btn btn-default">Negativo</button></td>
+      </tr>
+      <tr>
+        <td>
+        	<button type="button" class="btn btn-default">Grey Scale</button></td>
+      </tr>
+      <tr>
+        <td>
+        	<button type="button" class="btn btn-default">Sepia</button></td>
+      </tr>
+      <tr>
+        <td>
+        	<button type="button" class="btn btn-default">Binarizacion</button></td>
+      </tr>
+      <tr>
+        <td>
+        	<button type="button" class="btn btn-default">Brillo</button></td>
+      </tr>
+      <tr>
+        <td>
+        	<button type="button" class="btn btn-default">Saturacion</button></td>
+      </tr>
+      <tr>
+        <td>
+        	<button type="button" class="btn btn-default">Suavizado</button></td>
+      </tr>
+      <tr>
+        <td>
+        	<button type="button" class="btn btn-default">Deteccion de bordes</button></td>
+      </tr>
+      <tr>
+        <td>
+        	<button type="button" class="btn btn-default">Blur</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+  let canvas = document.getElementById("canvas");
+
+  let ctx = canvas.getContext("2d");
+   var width= canvas.width;
+   var height= canvas.height ;
+
+  var imageData;
+
+ var image1 = new Image();
+ image1.src = "images/paisaje.jpg";
+
+ image1.onload = function(){
+ 	canvas.width =this.width;
+ 	canvas.height =this.height;
+
+  ctx.drawImage(this, 0, 0);
+  imageData = ctx.getImageData(0, 0, this.width, this.height);
+  for ( x = 0; x < width; x++) {
+   for ( y = 0; y < height; y++) {
+      setPixel(imageData, x, y);
+ 			}
+	}
+	ctx.putImageData(imageData, 0,0);
+ }
+ 
+  function setPixel(imageData, x, y, r, g, b, a){
+
+     index = (x + y * imageData.width) * 4;
+     imageData.data[index+0]=0.299 *getRed(imageData, x, y);
+     imageData.data[index+1]=0.587 *getGreen(imageData, x, y);
+     imageData.data[index+2]= 0.114 *(imageData, x, y);
+     imageData.data[index+3]=255;
+}
+ function getRed(imageData, x, y){
+ 	index = (x + y * imageData.width) * 4;
+ 	return imageData.data[index + 0];
+ }
+
+  function getGreen(imageData, x, y){
+ 	index = (x + y * imageData.width) * 4;
+ 	return imageData.data[index + 1];
+ }
+
+  function getBlue(imageData, x, y){
+ 	index = (x + y * imageData.width) * 4;
+ 	return imageData.data[index + 2];
+ }
+
+	</script>
+
+</body>
+<script src="js/editor.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</html>
+
+<!--<script>
+  let canvas = document.getElementById("canvas");
+
+  let ctx = canvas.getContext("2d");
+   var width= canvas.width;
+   var height= canvas.height ;
+
+  var imageData;
+
+ var image1 = new Image();
+ image1.src = "paisaje.jpg";
+
+ image1.onload = function(){
+ 	canvas.width =this.width;
+ 	canvas.height =this.height;
+
+  ctx.drawImage(this, 0, 0);
+  imageData = ctx.getImageData(0, 0, this.width, this.height);
+  for ( x = 0; x < width; x++) {
+   for ( y = 0; y < height; y++) {
+      setPixel(imageData, x, y);
+ 			}
+	}
+	ctx.putImageData(imageData, 0,0);
+ }
+  function setPixel(imageData, x, y, r, g, b, a){
+
+     index = (x + y * imageData.width) * 4;
+
+
+     imageData.data[index+0]=BlackAndWhite;
+     imageData.data[index+1]=BlackAndWhite;
+     imageData.data[index+2]=BlackAndWhite;
+     imageData.data[index+3]=255;
+}
+ function getRed(imageData, x, y){
+ 	index = (x + y * imageData.width) * 4;
+ 	return imageData.data[index + 0];
+ }
+
+  function getGreen(imageData, x, y){
+ 	index = (x + y * imageData.width) * 4;
+ 	return imageData.data[index + 1];
+ }
+
+  function getBlue(imageData, x, y){
+ 	index = (x + y * imageData.width) * 4;
+ 	return imageData.data[index + 2];
+ }
+
+	</script>
+</section>
+
+
+///////////////////////////////////////////////////
+  let canvas = document.getElementById("canvas");
+
+  let ctx = canvas.getContext("2d");
+   var width= canvas.width;
+   var height= canvas.height ;
+
+  var imageData;
+
+ var image1 = new Image();
+ image1.src = "paisaje.jpg";
+
+ image1.onload = function(){
+  canvas.width =this.width;
+  canvas.height =this.height;
+
+  ctx.drawImage(this, 0, 0);
+  imageData = ctx.getImageData(0, 0, this.width, this.height);
+  for ( x = 0; x < this.width; x++) {
+   for ( y = 0; y < this.height; y++) {
+      setPixel(imageData, x, y);
+      }
+  }
+  ctx.putImageData(imageData, 0,0);
+ }
+  function setPixel(imageData, x, y, r, g, b, a){
+
+     index = (x + y * imageData.width) * 4;
+     imageData.data[index+0]=255-getRed(imageData, x, y);
+     imageData.data[index+1]=255-getGreen(imageData, x, y);
+     imageData.data[index+2]=255-getBlue(imageData, x, y);
+     imageData.data[index+3]=255;
+}
+ function getRed(imageData, x, y){
+  index = (x + y * imageData.width) * 4;
+  return imageData.data[index + 0];
+ }
+
+  function getGreen(imageData, x, y){
+  index = (x + y * imageData.width) * 4;
+  return imageData.data[index + 1];
+ }
+
+  function getBlue(imageData, x, y){
+  index = (x + y * imageData.width) * 4;
+  return imageData.data[index + 2];
+ }
+
+ //////////////////////////////7
+ -->
