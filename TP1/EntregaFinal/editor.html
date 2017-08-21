@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"> 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,7 +10,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/one-page-wonder.css" rel="stylesheet">
 </head>
-<canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />
+<!--<canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />  -->
+
 <body>
 
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -38,9 +39,33 @@
       </div>
     </div>
   </nav>
-  <div class="headlinee">
-        <div class="container">
-      </div>
+
+   <div class="headlinee">
+     
+  </div>
+
+
+  <table class="table text-right ">
+    <thead>
+      <tr>
+        <th class="text-right">Seleccione su imagen a editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label class="btn btn-default ">Seleccione
+          <input id="imageUpload" type="file" style="display: none"/>
+   </td>
+      </tr>
+</tbody>
+
+</table>
+<div class="col-md-9">
+          <div class="card-body text-right">
+            <canvas id="canvas" style="border:#000;" class="img-fluid" />
+          </div>
+        </div>
     </div>
   <table class="table tabla">
     <thead>
@@ -51,51 +76,45 @@
     <tbody>
       <tr>
         <td>
-        	<button type="button" class="btn btn-default">Negativo</button></td>
+        	<button type="button" id="greyScale" class="btn btn-default">Grey Scale</button></td>
       </tr>
       <tr>
         <td>
-        	<button type="button" class="btn btn-default">Grey Scale</button></td>
+          <button type="button" id="negativo"  class="btn btn-default">Negativo</button></td>
       </tr>
       <tr>
         <td>
-        	<button type="button" class="btn btn-default">Sepia</button></td>
+        	<button type="button" id="sepia" class="btn btn-default">Sepia</button></td>
       </tr>
       <tr>
         <td>
-        	<button type="button" class="btn btn-default">Binarizacion</button></td>
+        	<button type="button" id="binarizacion" class="btn btn-default">Binarizacion</button></td>
       </tr>
       <tr>
         <td>
-        	<button type="button" class="btn btn-default">Brillo</button></td>
+        	<button type="button" id="brillo" class="btn btn-default">Brillo</button></td>
       </tr>
       <tr>
         <td>
-        	<button type="button" class="btn btn-default">Saturacion</button></td>
+        	<button type="button"  id="saturacion" class="btn btn-default">Saturacion</button></td>
       </tr>
       <tr>
         <td>
-        	<button type="button" class="btn btn-default">Suavizado</button></td>
+        	<button type="button" id="suavizado" class="btn btn-default">Suavizado</button></td>
       </tr>
       <tr>
         <td>
-        	<button type="button" class="btn btn-default">Deteccion de bordes</button></td>
+        	<button type="button" id="detector" class="btn btn-default">Deteccion de bordes</button></td>
       </tr>
       <tr>
         <td>
-        	<button type="button" class="btn btn-default">Blur</button></td>
+        	<button type="button" id="blur" class="btn btn-default">Blur</button></td>
       </tr>
     </tbody>
-  </table>
- 
+  </table>  
 
-</body>
-<script src="js/editor.js"></script>
-<script src="js/bootstrap.min.js"></script>
-</html>
-
-<!--<script>
-  let canvas = document.getElementById("canvas");
+ <script>
+ let canvas = document.getElementById("canvas");
 
   let ctx = canvas.getContext("2d");
    var width= canvas.width;
@@ -104,61 +123,7 @@
   var imageData;
 
  var image1 = new Image();
- image1.src = "paisaje.jpg";
-
- image1.onload = function(){
- 	canvas.width =this.width;
- 	canvas.height =this.height;
-
-  ctx.drawImage(this, 0, 0);
-  imageData = ctx.getImageData(0, 0, this.width, this.height);
-  for ( x = 0; x < width; x++) {
-   for ( y = 0; y < height; y++) {
-      setPixel(imageData, x, y);
- 			}
-	}
-	ctx.putImageData(imageData, 0,0);
- }
-  function setPixel(imageData, x, y, r, g, b, a){
-
-     index = (x + y * imageData.width) * 4;
-
-
-     imageData.data[index+0]=BlackAndWhite;
-     imageData.data[index+1]=BlackAndWhite;
-     imageData.data[index+2]=BlackAndWhite;
-     imageData.data[index+3]=255;
-}
- function getRed(imageData, x, y){
- 	index = (x + y * imageData.width) * 4;
- 	return imageData.data[index + 0];
- }
-
-  function getGreen(imageData, x, y){
- 	index = (x + y * imageData.width) * 4;
- 	return imageData.data[index + 1];
- }
-
-  function getBlue(imageData, x, y){
- 	index = (x + y * imageData.width) * 4;
- 	return imageData.data[index + 2];
- }
-
-	</script>
-</section>
-
-
-///////////////////////////////////////////////////
-  let canvas = document.getElementById("canvas");
-
-  let ctx = canvas.getContext("2d");
-   var width= canvas.width;
-   var height= canvas.height ;
-
-  var imageData;
-
- var image1 = new Image();
- image1.src = "paisaje.jpg";
+ image1.src = "images/paisaje.jpg";
 
  image1.onload = function(){
   canvas.width =this.width;
@@ -168,6 +133,7 @@
   imageData = ctx.getImageData(0, 0, this.width, this.height);
   for ( x = 0; x < this.width; x++) {
    for ( y = 0; y < this.height; y++) {
+
       setPixel(imageData, x, y);
       }
   }
@@ -176,9 +142,9 @@
   function setPixel(imageData, x, y, r, g, b, a){
 
      index = (x + y * imageData.width) * 4;
-     imageData.data[index+0]=255-getRed(imageData, x, y);
-     imageData.data[index+1]=255-getGreen(imageData, x, y);
-     imageData.data[index+2]=255-getBlue(imageData, x, y);
+     imageData.data[index+0]=getRed(imageData, x, y);
+     imageData.data[index+1]=getGreen(imageData, x, y);
+     imageData.data[index+2]=getBlue(imageData, x, y);
      imageData.data[index+3]=255;
 }
  function getRed(imageData, x, y){
@@ -196,5 +162,11 @@
   return imageData.data[index + 2];
  }
 
- //////////////////////////////7
- -->
+  </script>
+
+</body>
+
+<script src="js/editor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</html>
