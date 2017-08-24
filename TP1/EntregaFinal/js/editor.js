@@ -1,16 +1,10 @@
-//terminar los ultimos 3 filtros
-//restaurar imagen a la original
-//seleccionar imagen 
 let canvas = document.getElementById("canvas");
-
 let ctx = canvas.getContext("2d");
 var width= canvas.width;
 var height= canvas.height ;
-
 var imageData;
-
 var image1 = new Image();
-image1.src = "paisaje.jpg";
+image1.src = "images/portfolio/paisaje.jpg";
 
 image1.onload = function(){
   canvas.width =this.width;
@@ -24,7 +18,9 @@ function changeImage(imageData){
   ctx.putImageData(imageData, 0,0);
 
 }
+
 btnGuardar();
+
 function btnGuardar(){
   var save = document.getElementById("guardarImagen");
   save.addEventListener("click", function(){
@@ -81,7 +77,9 @@ function negativo(){
  changeImage(imageData);
 
 }
+
 btnNegativo();
+
 function btnNegativo(){
   var negative = document.getElementById("negativo");
   negative.addEventListener("click", function(){
@@ -105,13 +103,16 @@ function sepia(){
 
 changeImage(imageData);
 }
+
 btnSepia();
+
 function btnSepia(){
   var Sepia = document.getElementById("sepia");
   Sepia.addEventListener("click", function(){
     sepia();
   });
 }
+
 function binarizacion (){
   for ( x = 0; x < canvas.width; x++) {
    for ( y = 0; y < canvas.height; y++) {
@@ -135,7 +136,9 @@ function btnBinarizacion(){
     binarizacion();
   });
 }
+
 btnBinarizacion();
+
 function brillo(brightnessValue){
   for ( x = 0; x < canvas.width; x++) {
    for ( y = 0; y < canvas.height; y++) {
@@ -193,7 +196,9 @@ function saturacion (saturationValue){
  changeImage(imageData);
 
 }
+
 btnSaturacion();
+
 function btnSaturacion(){
   var saturation = document.getElementById("saturacion");
   saturation.addEventListener("click", function(){
@@ -223,6 +228,7 @@ changeImage(imageData);
 }
 
 btnContraste();
+
 function btnContraste(){
   var contrast = document.getElementById("contraste");
   contrast.addEventListener("click", function(){
@@ -233,23 +239,6 @@ function btnContraste(){
 });
 });    
   }
-function detectorBordes(){
-
-}
-
-function blur(){
- 
-
-  }
-
-btnBlur();
-
-function btnBlur(){
-  var Blur = document.getElementById("blur");
-  Blur.addEventListener("click", function(){
-    blur();
-  });
-}
 
 
 function getRed(imageData, x, y){
