@@ -1,4 +1,3 @@
-//hacer un slider
 //terminar los ultimos 3 filtros
 //restaurar imagen a la original
 //seleccionar imagen 
@@ -11,7 +10,7 @@ var height= canvas.height ;
 var imageData;
 
 var image1 = new Image();
-image1.src = "panda.jpg";
+image1.src = "paisaje.jpg";
 
 image1.onload = function(){
   canvas.width =this.width;
@@ -30,22 +29,17 @@ function btnGuardar(){
   var save = document.getElementById("guardarImagen");
   save.addEventListener("click", function(){
     canvas.toDataURL("images/jpg");
-    console.log("hola");
   });
 }
 
 function btnSeleccionar(){
   var select = document.getElementById("selectImage");
-  select.addEventListener("click", function(){
-    //codigo
-  });
+  select.addEventListener("change", image1.onload());
 }
 
 function btnRestaurar(){
   var restore = document.getElementById("restaurarImagen");
-  restore.addEventListener("click", function(){
-  ctx.remove();
-  });
+  restore.addEventListener("click", image1.onload());
 }
 
 function greyScale(){
@@ -142,32 +136,38 @@ function btnBinarizacion(){
   });
 }
 btnBinarizacion();
-function brillo(){
+function brillo(brightnessValue){
   for ( x = 0; x < canvas.width; x++) {
    for ( y = 0; y < canvas.height; y++) {
     index = (x + y * imageData.width) * 4;
-    imageData.data[index+0]=1.35*getRed(imageData, x, y);
-    imageData.data[index+1]=1.35*getGreen(imageData, x, y);
-    imageData.data[index+2]=1.35*getBlue(imageData, x, y);
+    imageData.data[index+0]=brightnessValue*getRed(imageData, x, y);
+    imageData.data[index+1]=brightnessValue*getGreen(imageData, x, y);
+    imageData.data[index+2]=brightnessValue*getBlue(imageData, x, y);
     imageData.data[index+3]=255;
   }
 }
 
 changeImage(imageData);
+
 }
 btnBrillo();
+
 function btnBrillo(){
   var brightness = document.getElementById("brillo");
   brightness.addEventListener("click", function(){
-    brillo();
+    var rango = document.getElementById("range");
+    rango.addEventListener("change", function(){
+
+     brillo(this.value-49.7); 
+   
+});    
   });
 }
 
-function saturacion (){
+function saturacion (saturationValue){
   for ( x = 0; x < canvas.width; x++) {
    for ( y = 0; y < canvas.height; y++) {
-     index = (x + y * imageData.width) * 4;
-     var saturationValue = 2; 
+     index = (x + y * imageData.width) * 4; 
      var luzRed = 0.3086;
      var luzGreen = 0.6094;
      var luzBlue = 0.0820;
@@ -197,24 +197,20 @@ btnSaturacion();
 function btnSaturacion(){
   var saturation = document.getElementById("saturacion");
   saturation.addEventListener("click", function(){
-    saturacion();
-  });
-}
+  var rango = document.getElementById("range");
+    rango.addEventListener("change", function(){
+     saturacion(this.value-49); 
+   
+});
+});    
+  }
 
-function suavizado(){
 
-}
-function detectorBordes(){
 
-}
-function blur(){
-
-}
-function contraste(){
+function contraste(contrastValue){
   for ( x = 0; x < canvas.width; x++) {
    for ( y = 0; y < canvas.height; y++) {
-    var contraste=100;
-    var factor = (259 * (contraste + 255)) / (255 * (259 - contraste));
+    var factor = (259 * (contrastValue + 255)) / (255 * (259 - contrastValue));
     index = (x + y * imageData.width) * 4;
     imageData.data[index+0]=factor*(getRed(imageData, x, y)-128)+128;
     imageData.data[index+1]=factor*(getGreen(imageData, x, y)-128)+128;
@@ -230,9 +226,32 @@ btnContraste();
 function btnContraste(){
   var contrast = document.getElementById("contraste");
   contrast.addEventListener("click", function(){
-    contraste();
+   var rango = document.getElementById("range");
+    rango.addEventListener("change", function(){
+     contraste(this.value-50); 
+   
+});
+});    
+  }
+function detectorBordes(){
+
+}
+
+function blur(){
+ 
+
+  }
+
+btnBlur();
+
+function btnBlur(){
+  var Blur = document.getElementById("blur");
+  Blur.addEventListener("click", function(){
+    blur();
   });
 }
+
+
 function getRed(imageData, x, y){
   index = (x + y * imageData.width) * 4;
   return imageData.data[index + 0];
