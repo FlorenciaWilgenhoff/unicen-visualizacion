@@ -1,172 +1,411 @@
  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"> 
-<head>
+ <html xmlns="http://www.w3.org/1999/xhtml"> 
+ <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Editor de Fotos</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/one-page-wonder.css" rel="stylesheet">
+  <title>Editor de fotos</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="css/onePage.min.css" rel="stylesheet">
 </head>
-<!--<canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />  -->
 
-<body>
-
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Ver menú</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="Template.html">Inicio <span class="sr-only">(actual)</span></a></li>
-          <li><a href="editor.html">Editor <span class="sr-only">(actual)</span></a></li>
-          
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">ETUDAI</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#style">Ver estilos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#editor">Editar</a>
+          </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right iconos">
-          <li><a href="https://www.facebook.com/" target="_blank"><img alt="siguenos en facebook" src="images/iconos/iconoface.png" title="siguenos en facebook" /></a></li>
-          <li><a href="https://plus.google.com/" target="_blank"><img alt="siguenos en Google+" src="images/iconos/iconogoogle+.png" title="siguenos en Google+" /></a></li>
-          <li><a href="https://twitter.com/" target="_blank"><img alt="siguenos en Twitter" src="images/iconos/iconotwitter.png" title="siguenos en Twitter" /></a></li>
-        </ul>
-        </div>
       </div>
     </div>
   </nav>
+  <header class="masthead">
+    <div class="container">
+      <img class="img-fluid" src="images/profile.png" alt="">
+      <div class="intro-text">
+        <span class="name">Editor de imagenes</span>
+        <hr class="star-light">
+        <span class="skills">Creado por Florencia Wilgenhoff</span>
+      </div>
+    </div>
+  </header>
 
-   <div class="headlinee">
-     
+  <section id="style">
+    <div class="container">
+      <h2 class="text-center">Nuestros Filtros</h2>
+      <hr class="star-primary">
+      <div class="row">
+        <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="fa fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="images/portfolio/greyScale.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal2" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="fa fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="images/portfolio/negativo.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal3" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="fa fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="images/portfolio/sepia.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal4" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="fa fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="images/portfolio/binarizacion.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal5" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="fa fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="images/portfolio/brillo.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal6" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="fa fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="images/portfolio/saturacion.jpg" alt="">
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-4 portfolio-item">
+          <a class="portfolio-link" href="#portfolioModal6" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="fa fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="images/portfolio/contraste.jpg" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="success" id="editor">
+    <div class="container">
+      <h2 class="text-center">Editar</h2>
+      <hr class="star-light">
+      <div class="row">
+        <div class="col-lg-3 ml-right">
+          <label class="btn btn-lg btn-outline">
+            <input id="selectImagen" type="file" style="display: none"/>
+            Seleccionar imagen
+          </a>
+        </div>
+        <div class="col-lg-4 mx-auto text-center">
+          <a href="" id="guardarImagen"class="btn btn-lg btn-outline" download="panda.jpg">
+            <i class="fa fa-download"></i>
+            Guardar imagen
+          </a>
+        </div>
+        <div class="col-lg-3 mx-auto text-left">
+          <a id="restaurarImagen" class="btn btn-lg btn-outline">
+            Restaurar imagen
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 ml-right">
+          <br>
+          <button type="button" id="greyScale" class="btn btn-lg btn-outline">Grey Scale</button>
+        </br>
+        <br>
+        <button type="button" id="negativo"  class="btn btn-lg btn-outline">Negativo</button>
+      </br>
+      <br>
+      <button type="button" id="sepia" class="btn btn-lg btn-outline">Sepia</button>
+    </br>
+    <br>
+    <button type="button" id="binarizacion" class="btn btn-lg btn-outline">Binarizacion</button>
+  </br>
+  <br>
+  <button type="button" id="brillo" class="btn btn-lg btn-outline">Brillo</button>
+</br>
+<br>
+<button type="button" id="saturacion" class="btn btn-lg btn-outline">Saturacion</button>
+</br>
+<br>
+<button type="button" id="contraste" class="btn btn-lg btn-outline">Contraste</button>
+</br>
+<br>
+<button type="button" id="suavizado" class="btn btn-lg btn-outline">Suavizado</button>
+</br>
+<br>
+<button type="button" id="detector" class="btn btn-lg btn-outline">Deteccion de bordes</button>
+</br>
+<br>
+<button type="button" id="blur" class="btn btn-lg btn-outline">Blur</button>
+</br>
+
+</div>
+
+
+<div class="col-lg-8 ml-center">
+  <canvas id="canvas" style="border:#000 1px;" class="img-fluid" />
+</div>
+</div>
+
+</div>
+
+</section>
+
+<footer class="text-center">
+  <div class="footer-above">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col col-md-12">
+          <h3>Visita nuestras redes</h3>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a class="btn-social btn-outline" href="#">
+                <i class="fa fa-fw fa-facebook"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-social btn-outline" href="#">
+                <i class="fa fa-fw fa-google-plus"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-social btn-outline" href="#">
+                <i class="fa fa-fw fa-twitter"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-social btn-outline" href="#">
+                <i class="fa fa-fw fa-linkedin"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-social btn-outline" href="#">
+                <i class="fa fa-fw fa-dribbble"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
+</footer>
 
-  <table class="table text-right ">
-    <thead>
-      <tr>
-        <th class="text-right">Seleccione su imagen a editar</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label class="btn btn-default ">Seleccione
-          <input id="imageUpload" type="file" style="display: none"/>
-   </td>
-      </tr>
-</tbody>
+<div class="scroll-top d-lg-none">
+  <a class="btn btn-primary js-scroll-trigger" href="#page-top">
+    <i class="fa fa-chevron-up"></i>
+  </a>
+</div>
 
-</table>
-<div class="col-md-9">
-          <div class="card-body text-right">
-            <canvas id="canvas" style="border:#000;" class="img-fluid" />
+<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr">
+          <div class="rl"></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="modal-body">
+              <h2>Escala de grises</h2>
+              <hr class="star-primary">
+              <img class="img-fluid img-centered" src="images/portfolio/greyScale.jpg" alt="">
+            </div>
           </div>
         </div>
+      </div>
     </div>
-  <table class="table tabla">
-    <thead>
-      <tr>
-        <th>Estilos</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-        	<button type="button" id="greyScale" class="btn btn-default">Grey Scale</button></td>
-      </tr>
-      <tr>
-        <td>
-          <button type="button" id="negativo"  class="btn btn-default">Negativo</button></td>
-      </tr>
-      <tr>
-        <td>
-        	<button type="button" id="sepia" class="btn btn-default">Sepia</button></td>
-      </tr>
-      <tr>
-        <td>
-        	<button type="button" id="binarizacion" class="btn btn-default">Binarizacion</button></td>
-      </tr>
-      <tr>
-        <td>
-        	<button type="button" id="brillo" class="btn btn-default">Brillo</button></td>
-      </tr>
-      <tr>
-        <td>
-        	<button type="button"  id="saturacion" class="btn btn-default">Saturacion</button></td>
-      </tr>
-      <tr>
-        <td>
-        	<button type="button" id="suavizado" class="btn btn-default">Suavizado</button></td>
-      </tr>
-      <tr>
-        <td>
-        	<button type="button" id="detector" class="btn btn-default">Deteccion de bordes</button></td>
-      </tr>
-      <tr>
-        <td>
-        	<button type="button" id="blur" class="btn btn-default">Blur</button></td>
-      </tr>
-    </tbody>
-  </table>  
+  </div>
+</div>
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr">
+          <div class="rl"></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="modal-body">
+              <h2>Negativo</h2>
+              <hr class="star-primary">
+              <img class="img-fluid img-centered" src="images/portfolio/negativo.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr">
+          <div class="rl"></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="modal-body">
+              <h2>Sepia</h2>
+              <hr class="star-primary">
+              <img class="img-fluid img-centered" src="images/portfolio/sepia.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr">
+          <div class="rl"></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="modal-body">
+              <h2>Binarizacion</h2>
+              <hr class="star-primary">
+              <img class="img-fluid img-centered" src="images/portfolio/binarizacion.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr">
+          <div class="rl"></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="modal-body">
+              <h2>Brillo</h2>
+              <hr class="star-primary">
+              <img class="img-fluid img-centered" src="images/portfolio/brillo.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr">
+          <div class="rl"></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="modal-body">
+              <h2>Saturacion</h2>
+              <hr class="star-primary">
+              <img class="img-fluid img-centered" src="images/portfolio/saturacion.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr">
+          <div class="rl"></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="modal-body">
+              <h2>Contraste</h2>
+              <hr class="star-primary">
+              <img class="img-fluid img-centered" src="images/portfolio/contraste.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/editor.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/popper/popper.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
- <script>
- let canvas = document.getElementById("canvas");
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  let ctx = canvas.getContext("2d");
-   var width= canvas.width;
-   var height= canvas.height ;
 
-  var imageData;
-
- var image1 = new Image();
- image1.src = "images/paisaje.jpg";
-
- image1.onload = function(){
-  canvas.width =this.width;
-  canvas.height =this.height;
-
-  ctx.drawImage(this, 0, 0);
-  imageData = ctx.getImageData(0, 0, this.width, this.height);
-  for ( x = 0; x < this.width; x++) {
-   for ( y = 0; y < this.height; y++) {
-
-      setPixel(imageData, x, y);
-      }
-  }
-  ctx.putImageData(imageData, 0,0);
- }
-  function setPixel(imageData, x, y, r, g, b, a){
-
-     index = (x + y * imageData.width) * 4;
-     imageData.data[index+0]=getRed(imageData, x, y);
-     imageData.data[index+1]=getGreen(imageData, x, y);
-     imageData.data[index+2]=getBlue(imageData, x, y);
-     imageData.data[index+3]=255;
-}
- function getRed(imageData, x, y){
-  index = (x + y * imageData.width) * 4;
-  return imageData.data[index + 0];
- }
-
-  function getGreen(imageData, x, y){
-  index = (x + y * imageData.width) * 4;
-  return imageData.data[index + 1];
- }
-
-  function getBlue(imageData, x, y){
-  index = (x + y * imageData.width) * 4;
-  return imageData.data[index + 2];
- }
-
-  </script>
+<!-- Custom scripts for this template -->
+<script src="js/freelancer.min.js"></script>
 
 </body>
 
-<script src="js/editor.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </html>

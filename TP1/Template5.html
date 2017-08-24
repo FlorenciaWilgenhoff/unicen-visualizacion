@@ -8,41 +8,32 @@
 	</body>
 <script>
   let canvas = document.getElementById("canvas");
-
   let ctx = canvas.getContext("2d");
    var width= canvas.width;
    var height= canvas.height ;
-
   var imageData;
-
  var image1 = new Image();
- image1.src = "paisaje.jpg";
-
+ image1.src = "images/paisaje.jpg";
  image1.onload = function(){
   canvas.width =this.width;
   canvas.height =this.height;
-
   ctx.drawImage(this, 0, 0);
   imageData = ctx.getImageData(0, 0, this.width, this.height);
-for ( x = 0; x < this.width; x++) {
+  for ( x = 0; x < this.width; x++) {
    for ( y = 0; y < this.height; y++) {
-      var binarizacion = (getRed(imageData, x, y) + getGreen(imageData, x, y) + getBlue(imageData, x, y)) / 3;
-            if (binarizacion > 130) {
-                setPixel(imageData, x, y, 0, 0, 0, 255);
-            }
-            else {
-                setPixel(imageData, x, y, 255, 255, 255, 255);
-            }
+      setPixel(imageData, x, y);
+      }
   }
   ctx.putImageData(imageData, 0,0);
  }
-  function setPixel(imageData, x, y, r, g, b, a){
-index = (x + y * imageData.width) * 4;
+ function setPixel(imageData, x, y, r, g, b, a){
+     index = (x + y * imageData.width) * 4;
     var BlackAndWhite = (getRed(imageData, x, y)+ getGreen(imageData, x , y)+ getBlue(imageData, x , y))/3;
      imageData.data[index+0]=BlackAndWhite;
      imageData.data[index+1]=BlackAndWhite;
      imageData.data[index+2]=BlackAndWhite;
      imageData.data[index+3]=255;
+
 }
 
  function getRed(imageData, x, y){
