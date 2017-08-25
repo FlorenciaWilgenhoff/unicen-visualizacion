@@ -43,17 +43,15 @@ function btnSelectImage() {
         reader.readAsDataURL(file);
         
     });
-    
-   
 };
  function Onload(e) {
-        var $img = $('<img>', { src: e.target.result });
-        var canvas = $('#canvas')[0];
-        
+        image1.src= e.target.result;  
     }
+btnRestaurar();
+
 function btnRestaurar(){
   var restore = document.getElementById("restaurarImagen");
-  restore.addEventListener("click", changeImage());
+  restore.addEventListener("click", changeImage);
 }
 
 function greyScale(){
