@@ -28,14 +28,32 @@ function btnGuardar(){
   });
 }
 
-function btnSeleccionar(){
-  var select = document.getElementById("selectImage");
-  select.addEventListener("change", image1.onload());
-}
-
+btnSelectImage();
+function btnSelectImage() {
+    var select = document.getElementById("selectImage");
+  select.addEventListener("change", function(e){
+        var file = e.target.files[0],
+            imageType = /image.*/;
+        
+        if (!file.type.match(imageType))
+            return;
+        
+        var reader = new FileReader();
+        reader.onload = Onload;
+        reader.readAsDataURL(file);
+        
+    });
+    
+   
+};
+ function Onload(e) {
+        var $img = $('<img>', { src: e.target.result });
+        var canvas = $('#canvas')[0];
+        
+    }
 function btnRestaurar(){
   var restore = document.getElementById("restaurarImagen");
-  restore.addEventListener("click", image1.onload());
+  restore.addEventListener("click", changeImage());
 }
 
 function greyScale(){
