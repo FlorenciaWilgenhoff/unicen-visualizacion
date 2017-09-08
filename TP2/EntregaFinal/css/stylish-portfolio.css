@@ -1,8 +1,3 @@
-/*!
- * Start Bootstrap - Stylish Portfolio (http://startbootstrap.com/)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
 
 
 /* Global Styles */
@@ -164,7 +159,7 @@ hr.small {
     display: table;
     width: 100%;
     height: 100%;
-    background: url(../img/imagenInfantil.jpg) no-repeat center center scroll;
+    background: url(../img/imagenInfantil1.jpg) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

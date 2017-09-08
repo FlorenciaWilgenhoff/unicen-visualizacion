@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -66,7 +64,7 @@
     <header class="header" id="top">
       <div class="text-vertical-center">
         <h1>Bienvenido a Rompecabezas para niños</h1> <!--CAMBIAR COLOR DE LETRA Y TIPOGRAFIA -->
-        <h3>Free Bootstrap Themes &amp; Templates</h3> <!--CAMBIAR FRASE--->
+        <h3></h3> <!--CAMBIAR FRASE--->
         <br>
         <a href="#services" class="btn btn-dark btn-lg js-scroll-trigger">Jugar</a>
       </div>
@@ -162,36 +160,7 @@
           <div class="col-lg-10 mx-auto text-center">
             <h2>Nivel 1</h2>
             <hr class="small">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="portfolio-item">
-                  <a href="#">
-                    <img class="img-portfolio img-fluid" src="img/portfolio-1.jpg">
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="portfolio-item">
-                  <a href="#">
-                    <img class="img-portfolio img-fluid" src="img/portfolio-2.jpg">
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="portfolio-item">
-                  <a href="#">
-                    <img class="img-portfolio img-fluid" src="img/portfolio-3.jpg">
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="portfolio-item">
-                  <a href="#">
-                    <img class="img-portfolio img-fluid" src="img/portfolio-4.jpg">
-                  </a>
-                </div>
-              </div>
-            </div>
+            <canvas id="canvas" width="900" height="900" style="border:#000 1px;" class="img-fluid" /> 
             <!-- /.row (nested) -->
             <a href="#" class="btn btn-dark">Temporizador</a>
           </div>
@@ -209,7 +178,7 @@
           <div class="col-lg-10 mx-auto text-center">
             <h2>Nivel 2</h2>
             <hr class="small">
-            <canvas id="canvas" style="border:#000 1px;" class="img-fluid" /> 
+            
             <!-- /.row (nested) -->
             <a href="#" class="btn btn-dark">Temporizador</a>
           </div>
@@ -311,10 +280,8 @@
       </a>
     </footer>
     <!-- JavaScript Rompecabezas con niveles -->
-     <script src="js/nivel1.js"></script>
-     <script src="js/nivel2.js"></script>
-     <script src="js/nivel3.js"></script>
-     <script src="js/nivel4.js"></script>
+     <script src="js/canvas.js"></script>
+     <script src="js/figures.js"></script>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
