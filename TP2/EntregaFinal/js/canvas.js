@@ -1,10 +1,11 @@
      let canvas = document.getElementById("canvas");
      let ctx = canvas.getContext("2d"); 
-     function Square(paramPosX, paramPosY, paramX, paramY){
+     function Square(paramPosX, paramPosY, paramX, paramY, color){
             this.posX = paramPosX;
             this.posY = paramPosY;
             this.xW = paramX;
             this.yH = paramY;
+            this.color = color;
             this.arrastrar = false;
             let cuadrado = this;
             canvas.addEventListener("mousedown", function (e) {
@@ -18,8 +19,8 @@
             });
 
         }
-        Square.prototype.drawSquare =  function (){
-            ctx.fillStyle = "white";
+        Square.prototype.draw =  function (){
+            ctx.fillStyle = this.color;
             ctx.beginPath();
             ctx.fillRect(this.posX, this.posY, this.xW, this.yH);
             ctx.lineWidth = 5;
@@ -29,14 +30,12 @@
         }
 
        Square.prototype.mouseDown =  function (e){
-        //dentro del Element del document
         var rect = canvas.getBoundingClientRect();
         var cX = e.clientX-rect.left;
         var cY = e.clientY-rect.top;
         var d1 = (this.posX + this.xW);
         var d2 = (this.posY + this.yH);
 
-        //dentro de la pantalla
         if ((cX >= this.posX) && (cX <= d1)&&(cY >= this.posY) && (cY <= d2)){
            this.arrastrar = true;
         } 
@@ -59,20 +58,21 @@
             this.clear();
             this.posX = posX;
             this.posY = posY;
-            this.drawSquare();
+            this.draw();
 
           }
 
           Square.prototype.clear=  function (){
                     ctx.clearRect(0,0, canvas.width, canvas.height);
-                    this.drawSquare();
+                    this.draw();
           }
 
 
-           function Circle(paramPosX, paramPosY, paramRadio){
+           function Circle(paramPosX, paramPosY, paramRadio, color){
             this.posX = paramPosX;
             this.posY = paramPosY;
             this.radio = paramRadio;
+            this.color = color;
             let circulo = this;
             canvas.addEventListener("mousedown", function (e) {
                 circulo.mouseDown(e);
@@ -84,8 +84,8 @@
             circulo.mouseUp(e);
             });
         }
-        Circle.prototype.drawCircle =  function (){
-            ctx.fillStyle = "white";
+        Circle.prototype.draw =  function (){
+            ctx.fillStyle = this.color;
             ctx.beginPath();
             ctx.arc(this.posX, this.posY, this.radio , 0, Math.PI*2);
             ctx.lineWidth = 5;
@@ -96,17 +96,14 @@
         }
 
         Circle.prototype.mouseDown =  function (e){
-        //dentro del Element del document
-        var cX = e.clientX;
-        var cY = e.clientY;
+        var rect = canvas.getBoundingClientRect();
+        var cX = e.clientX-rect.left;
+        var cY = e.clientY-rect.top;
         var d1= Math.sqrt(Math.pow(cX-this.posX,2)+Math.pow(cY-this.posY,2));
-        //dentro de la pantalla
-        if(d1 < this.radio){
+        if(d1 <  this.radio){
             this.arrastrar = true;
         } 
         
-        var sX = e.screenX;
-        var sY = e.screenY;
         }
 
          Circle.prototype.mouseMove=  function (e){
@@ -125,24 +122,36 @@
             this.clear();
             this.posX = posX;
             this.posY = posY;
-            this.drawCircle();
+            this.draw();
 
           }
 
           Circle.prototype.clear=  function (){
           ctx.clearRect(0,0, canvas.width, canvas.height);
-          this.drawCircle();
+          this.draw();
           }
 
-           function Triangle(paramPosX, paramPosY, paramSideT){
+           function Triangle(paramPosX, paramPosY, paramSideT, color){
             this.posX = paramPosX;
             this.posY = paramPosY;
             this.sideT = paramSideT;
+            this.color = color;
             let triangulo = this;
+            canvas.addEventListener("mousedown", function (e) {
+                triangulo.mouseDown(e);
+            });
+            canvas.addEventListener("mousemove", function (e) {
+                triangulo.mouseMove(e);
+            });
+            canvas.addEventListener("mouseup", function(e) {  
+            triangulo.mouseUp(e);
+            });
+
             
 
         }
-        Triangle.prototype.drawTriangle =  function (){
+        Triangle.prototype.draw =  function (){
+           ctx.fillStyle = this.color;
            ctx.beginPath();
            ctx.moveTo(this.posX, this.posY);
            ctx.lineTo(this.posX+this.sideT , this.posY);
@@ -152,33 +161,132 @@
            ctx.stroke();
         }
 
-         function Rectangle(paramPosX, paramPosY, paramL, paramA){
+
+        Triangle.prototype.mouseDown =  function (e){
+        var rect = canvas.getBoundingClientRect();
+        var cX = e.clientX-rect.left;
+        var cY = e.clientY-rect.top;
+        var d1 = (this.posX + this.sideT);
+        var d2 = (this.posY + this.sideT);
+
+       if ((cX >= this.posX) && (cX <= d1)&&(cY >= this.posY) && (cY <= d2)){
+           this.arrastrar = true;
+        } 
+        }
+         
+
+         Triangle.prototype.mouseMove=  function (e){
+
+            if(this.arrastrar){
+              var rect = canvas.getBoundingClientRect();
+              this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+            }
+          }
+
+          Triangle.prototype.mouseUp=  function (e){
+            this.arrastrar = false;
+          }
+
+            Triangle.prototype.setPos=  function (posX, posY){
+            this.clear();
+            this.posX = posX;
+            this.posY = posY;
+            this.draw();
+
+          }
+
+          Triangle.prototype.clear=  function (){
+                    ctx.clearRect(0,0, canvas.width, canvas.height);
+                    this.draw();
+          }
+         function Rectangle(paramPosX, paramPosY, paramA, paramL, color){
             this.posX = paramPosX;
             this.posY = paramPosY;
-            this.heightRectangle = paramL;
             this.widthRectangle = paramA;
+            this.heightRectangle = paramL;
+            this.color = color;
+            let rectangle = this; 
+            canvas.addEventListener("mousedown", function (e) {
+                rectangle.mouseDown(e);
+            });
+            canvas.addEventListener("mousemove", function (e) {
+                rectangle.mouseMove(e);
+            });
+            canvas.addEventListener("mouseup", function(e) {  
+            rectangle.mouseUp(e);
+            });
             
 
         }
-        Rectangle.prototype.drawRectangle =  function (){
-           ctx.fillStyle = "white";
+        Rectangle.prototype.draw =  function (){
+            ctx.fillStyle = this.color;
             ctx.beginPath();
-            ctx.fillRect(this.posX, this.posY, this.heightRectangle, this.widthRectangle);
+            ctx.fillRect(this.posX, this.posY, this.widthRectangle, this.heightRectangle);
             ctx.lineWidth = 5;
             ctx.lineCap ="round";
-            ctx.strokeRect (this.posX, this.posY, this.heightRectangle, this.widthRectangle);
+            ctx.strokeRect (this.posX, this.posY, this.widthRectangle, this.heightRectangle);
             ctx.closePath();
         }
 
-           function Diamond(paramPosX, paramPosY,paramSideD){
+        Rectangle.prototype.mouseDown =  function (e){
+        var rect = canvas.getBoundingClientRect();
+        var cX = e.clientX-rect.left;
+        var cY = e.clientY-rect.top;
+        var d1 = (this.posX + this.widthRectangle);
+        var d2 = (this.posY + this.heightRectangle);
+
+        if ((cX >= this.posX) && (cX <= d1)&&(cY >= this.posY) && (cY <= d2)){
+           this.arrastrar = true;
+        } 
+        }
+         
+
+         Rectangle.prototype.mouseMove=  function (e){
+
+            if(this.arrastrar){
+              var rect = canvas.getBoundingClientRect();
+              this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+            }
+          }
+
+          Rectangle.prototype.mouseUp=  function (e){
+            this.arrastrar = false;
+          }
+
+            Rectangle.prototype.setPos=  function (posX, posY){
+            this.clear();
+            this.posX = posX;
+            this.posY = posY;
+            this.draw();
+
+          }
+
+          Rectangle.prototype.clear=  function (){
+                    ctx.clearRect(0,0, canvas.width, canvas.height);
+                    this.draw();
+          }
+
+           function Diamond(paramPosX, paramPosY,paramSideD, color){
             this.posX = paramPosX;
             this.posY = paramPosY;
             this.sideD = paramSideD;
+            this.color = color;
             let diamond = this;
+            canvas.addEventListener("mousedown", function (e) {
+                diamond.mouseDown(e);
+            });
+            canvas.addEventListener("mousemove", function (e) {
+                diamond.mouseMove(e);
+            });
+            canvas.addEventListener("mouseup", function(e) {  
+            diamond.mouseUp(e);
+            });
+
             
 
         }
-        Diamond.prototype.drawDiamond =  function (){
+        Diamond.prototype.draw =  function (){
+           ctx.fillStyle = this.color;
            ctx.beginPath();
            ctx.moveTo(this.posX, this.posY);
            ctx.lineTo(this.posX+this.sideD , this.posY+this.sideD);
@@ -188,15 +296,64 @@
            ctx.stroke();
         }
 
-        function Hexagon(paramPosX, paramPosY,  paramSideH ){
+        Diamond.prototype.mouseDown =  function (e){
+        var rect = canvas.getBoundingClientRect();
+        var cX = e.clientX-rect.left;
+        var cY = e.clientY-rect.top;
+        var d1 = (this.posX + this.sideD);
+        var d2 = (this.posY + this.sideD);
+
+        if ((cX >= this.posX) && (cX <= d1)&&(cY >= this.posY) && (cY <= d2)){
+           this.arrastrar = true;
+        } 
+        }
+         
+
+         Diamond.prototype.mouseMove=  function (e){
+
+            if(this.arrastrar){
+              var rect = canvas.getBoundingClientRect();
+              this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+            }
+          }
+
+          Diamond.prototype.mouseUp=  function (e){
+            this.arrastrar = false;
+          }
+
+            Diamond.prototype.setPos=  function (posX, posY){
+            this.clear();
+            this.posX = posX;
+            this.posY = posY;
+            this.draw();
+
+          }
+
+          Diamond.prototype.clear=  function (){
+                    ctx.clearRect(0,0, canvas.width, canvas.height);
+                    this.draw();
+          }
+
+        function Hexagon(paramPosX, paramPosY,  paramSideH ,color){
             this.posX = paramPosX;
             this.posY = paramPosY;
             this.sideH = paramSideH;
+            this.color = color;
             let hexagon = this;
+            canvas.addEventListener("mousedown", function (e) {
+                hexagon.mouseDown(e);
+            });
+            canvas.addEventListener("mousemove", function (e) {
+                hexagon.mouseMove(e);
+            });
+            canvas.addEventListener("mouseup", function(e) {  
+            hexagon.mouseUp(e);
+            });
             
 
         }
-        Hexagon.prototype.drawHexagon =  function (){
+        Hexagon.prototype.draw =  function (){
+          ctx.fillStyle = this.color;
           let sideMulti = this.sideH*2;
           let sideDiv = this.sideH/2;
            ctx.beginPath();
@@ -211,17 +368,66 @@
 
 
         }
+
+        Hexagon.prototype.mouseDown =  function (e){
+        var rect = canvas.getBoundingClientRect();
+        var cX = e.clientX-rect.left;
+        var cY = e.clientY-rect.top;
+        var d1 = (this.posX + this.sideH);
+        var d2 = (this.posY + this.sideH);
+
+        if ((cX >= this.posX) && (cX <= d1)&&(cY >= this.posY) && (cY <= d2)){
+           this.arrastrar = true;
+        } 
+        }
+         
+
+         Hexagon.prototype.mouseMove=  function (e){
+
+            if(this.arrastrar){
+              var rect = canvas.getBoundingClientRect();
+              this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+            }
+          }
+
+          Hexagon.prototype.mouseUp=  function (e){
+            this.arrastrar = false;
+          }
+
+            Hexagon.prototype.setPos=  function (posX, posY){
+            this.clear();
+            this.posX = posX;
+            this.posY = posY;
+            this.draw();
+
+          }
+
+          Hexagon.prototype.clear=  function (){
+                    ctx.clearRect(0,0, canvas.width, canvas.height);
+                    this.draw();
+          }
         
       
-         function Pentagon(paramPosX, paramPosY, paramSide ){
+         function Pentagon(paramPosX, paramPosY, paramSide ,color){
             this.posX = paramPosX;
             this.posY = paramPosY;
             this.side = paramSide;
-            let triangulo = this;
+            this.color = color;
+            let pentagon = this;
+            canvas.addEventListener("mousedown", function (e) {
+                pentagon.mouseDown(e);
+            });
+            canvas.addEventListener("mousemove", function (e) {
+                pentagon.mouseMove(e);
+            });
+            canvas.addEventListener("mouseup", function(e) {  
+            pentagon.mouseUp(e);
+            });
             
 
         }
-        Pentagon.prototype.drawPentagon =  function (){
+        Pentagon.prototype.draw =  function (){
+          ctx.fillStyle = this.color;
            let sideMulti = this.side*2;
            let sideDiv = this.side/2;
            ctx.beginPath();
@@ -237,15 +443,64 @@
         }
 
 
-         function Parallelogram(paramPosX, paramPosY, paramSideP ){
+        Pentagon.prototype.mouseDown =  function (e){
+        var rect = canvas.getBoundingClientRect();
+        var cX = e.clientX-rect.left;
+        var cY = e.clientY-rect.top;
+        var d1 = (this.posX + this.side);
+        var d2 = (this.posY + this.side);
+
+        if ((cX >= this.posX) && (cX <= d1)&&(cY >= this.posY) && (cY <= d2)){
+           this.arrastrar = true;
+        } 
+        }
+         
+
+         Pentagon.prototype.mouseMove=  function (e){
+
+            if(this.arrastrar){
+              var rect = canvas.getBoundingClientRect();
+              this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+            }
+          }
+
+          Pentagon.prototype.mouseUp=  function (e){
+            this.arrastrar = false;
+          }
+
+            Pentagon.prototype.setPos=  function (posX, posY){
+            this.clear();
+            this.posX = posX;
+            this.posY = posY;
+            this.draw();
+
+          }
+
+          Pentagon.prototype.clear=  function (){
+                    ctx.clearRect(0,0, canvas.width, canvas.height);
+                    this.draw();
+          }
+
+         function Parallelogram(paramPosX, paramPosY, paramSideP, color ){
             this.posX = paramPosX;
             this.posY = paramPosY;
             this.sideP = paramSideP;
-            let triangulo = this;
+            this.color = color;
+            let parallelogram = this;
+            canvas.addEventListener("mousedown", function (e) {
+                parallelogram.mouseDown(e);
+            });
+            canvas.addEventListener("mousemove", function (e) {
+                parallelogram.mouseMove(e);
+            });
+            canvas.addEventListener("mouseup", function(e) {  
+            parallelogram.mouseUp(e);
+            });
             
 
         }
-        Parallelogram.prototype.drawParallelogram =  function (){
+        Parallelogram.prototype.draw =  function (){
+          ctx.fillStyle = this.color;
            let sideMulti = this.sideP*2;
            let sideDiv = this.sideP/2;
            ctx.beginPath();
@@ -259,5 +514,45 @@
 
         }
 
-        parallelogram
+        Parallelogram.prototype.mouseDown =  function (e){
+        var rect = canvas.getBoundingClientRect();
+        var cX = e.clientX-rect.left;
+        var cY = e.clientY-rect.top;
+        var d1 = (this.posX + this.sideP);
+        var d2 = (this.posY + this.sideP);
+
+        if ((cX >= this.posX) && (cX <= d1)&&(cY >= this.posY) && (cY <= d2)){
+           this.arrastrar = true;
+        } 
+        }
+         
+
+         Parallelogram.prototype.mouseMove=  function (e){
+
+            if(this.arrastrar){
+              var rect = canvas.getBoundingClientRect();
+              this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+            }
+          }
+
+          Parallelogram.prototype.mouseUp=  function (e){
+            this.arrastrar = false;
+          }
+
+            Parallelogram.prototype.setPos=  function (posX, posY){
+            this.clear();
+            this.posX = posX;
+            this.posY = posY;
+            this.draw();
+
+          }
+
+          Parallelogram.prototype.clear=  function (){
+                    ctx.clearRect(0,0, canvas.width, canvas.height);
+                    this.draw();
+          }
+
+
+
+       
         
