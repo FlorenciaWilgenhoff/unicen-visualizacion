@@ -157,14 +157,25 @@
     <section id="portfolio1" class="portfolio">
       <div class="container">
         <div class="row">
-          <div class="col-lg-10 mx-auto text-center">
+          <div class="card text-center">
+          <div class="card-header">
             <h2>Nivel 1</h2>
-            <hr class="small">
           </div>
-            <hr class="small">
-            <canvas id="canvas" width="900" height="600" style="border:#000 1px;" class="img-fluid" /> 
+          <div class="card-block">
+          <div class="col-lg-10 mx-auto text-center">
+          </div>
+            <!--<canvas id="canvas" width="900" height="450" style="border:#000 1px;" class="img-fluid" />  -->
             <!-- /.row (nested) -->
-            <a href="#" class="btn btn-dark">Temporizador</a>
+            <div id="cronometro">
+  <div id="reloj">
+    0 00 00 00
+  </div>
+  <form name="cron" action="#">
+    <input type="button" value="Empezar" name="boton1"   />
+    <input type="button" value="Parar" name="boton2"  /><br/>
+  </form>
+</div>
+
           <!-- /.col-lg-10 -->
         </div>
         <!-- /.row -->
@@ -175,16 +186,29 @@
     <!-- Nivel 2 -->
     <section id="portfolio2" class="portfolio">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-10 mx-auto text-center">
+        <div class="card text-center">
+          <div class="card-header">
             <h2>Nivel 2</h2>
-            <hr class="small">
-            <canvas id="canvas" width="900" height="900" style="border:#000 1px;" class="img-fluid" /> 
-            <!-- /.row (nested) -->
-            <a href="#" class="btn btn-dark">Temporizador</a>
           </div>
+          <div class="card-block">
+          <div class="col-lg-10 mx-auto text-center">
+          </div>
+            <canvas id="canvas" width="900" height="400" style="border:#000 1px;" class="img-fluid" /> 
+            <!-- /.row (nested) -->
+            <div id="cronometro">
+              <div id="reloj">
+                0 00 00 00
+              </div>
+              <form name="cron" action="#">
+                <input type="button" value="Empezar" name="boton1"   />
+                <input type="button" value="Parar" name="boton2"  /><br/>
+              </form>
+            </div>
+
           <!-- /.col-lg-10 -->
         </div>
+        <!-- /.row -->
+      </div>
         <!-- /.row -->
       </div>
       <!-- /.container -->
@@ -194,12 +218,16 @@
     <section id="portfolio3" class="portfolio">
       <div class="container">
         <div class="row">
-          <div class="col-lg-10 mx-auto text-center">
+          <div class="card text-center">
+          <div class="card-header">
             <h2>Nivel 3</h2>
-            <hr class="small">
-           <canvas id="canvas" width="900" height="900" style="border:#000 1px;" class="img-fluid" /> 
-            <a href="#" class="btn btn-dark">Temporizador</a>
           </div>
+          <div class="card-block">
+          <div class="col-lg-10 mx-auto text-center">
+          </div>
+            <canvas id="canvas" width="900" height="600" style="border:#000 1px;" class="img-fluid" /> 
+            <!-- /.row (nested) -->
+            <btn class="btn btn-dark timer ">Temporizador
           <!-- /.col-lg-10 -->
         </div>
         <!-- /.row -->
@@ -211,12 +239,16 @@
     <section id="portfolio4" class="portfolio">
       <div class="container">
         <div class="row">
-          <div class="col-lg-10 mx-auto text-center">
+          <div class="card text-center">
+          <div class="card-header">
             <h2>Nivel 4</h2>
-            <hr class="small">
-            <canvas id="canvas" width="900" height="900" style="border:#000 1px;" class="img-fluid" /> 
-            <a href="#" class="btn btn-dark">Temporizador</a>
           </div>
+          <div class="card-block">
+          <div class="col-lg-10 mx-auto text-center">
+          </div>
+            <canvas id="canvas" width="900" height="600" style="border:#000 1px;" class="img-fluid" /> 
+            <!-- /.row (nested) -->
+            <btn class="btn btn-dark">Temporizador
           <!-- /.col-lg-10 -->
         </div>
         <!-- /.row -->

@@ -1,5 +1,7 @@
      let canvas = document.getElementById("canvas");
      let ctx = canvas.getContext("2d"); 
+     ctx.fillStyle = "#FFFF00";
+     ctx.fillRect(0, 0, canvas.width, canvas.height);
      function Square(paramPosX, paramPosY, paramX, paramY, color){
             this.posX = paramPosX;
             this.posY = paramPosY;
@@ -8,11 +10,11 @@
             this.color = color;
             this.arrastrar = false;
             let cuadrado = this;
-            canvas.addEventListener("mousedown", function (e) {
-                cuadrado.mouseDown(e);
+            canvas.addEventListener("mousedown", function (e) {   
+            cuadrado.mouseDown(e);
             });
             canvas.addEventListener("mousemove", function (e) {
-                cuadrado.mouseMove(e);
+           cuadrado.mouseMove(e); 
             });
             canvas.addEventListener("mouseup", function(e) {  
             cuadrado.mouseUp(e);
@@ -47,6 +49,9 @@
             if(this.arrastrar){
               var rect = canvas.getBoundingClientRect();
               this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+               for (var i = 0; i < drawnFiguresNivel2.length; i++) {
+            drawnFiguresNivel2[i].draw(); 
+          }
             }
           }
 
@@ -111,6 +116,9 @@
             if(this.arrastrar){
               var rect = canvas.getBoundingClientRect();
               this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+               for (var i = 0; i < drawnFiguresNivel2.length; i++) {
+            drawnFiguresNivel2[i].draw(); 
+          }
             }
           }
 
@@ -180,6 +188,9 @@
             if(this.arrastrar){
               var rect = canvas.getBoundingClientRect();
               this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+               for (var i = 0; i < drawnFiguresNivel2.length; i++) {
+            drawnFiguresNivel2[i].draw(); 
+          }
             }
           }
 
@@ -246,6 +257,9 @@
             if(this.arrastrar){
               var rect = canvas.getBoundingClientRect();
               this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+               for (var i = 0; i < drawnFiguresNivel2.length; i++) {
+            drawnFiguresNivel2[i].draw(); 
+          }
             }
           }
 
@@ -314,6 +328,9 @@
             if(this.arrastrar){
               var rect = canvas.getBoundingClientRect();
               this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+               for (var i = 0; i < drawnFiguresNivel2.length; i++) {
+            drawnFiguresNivel2[i].draw(); 
+          }
             }
           }
 
@@ -387,6 +404,9 @@
             if(this.arrastrar){
               var rect = canvas.getBoundingClientRect();
               this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+               for (var i = 0; i < drawnFiguresNivel2.length; i++) {
+            drawnFiguresNivel2[i].draw(); 
+          }
             }
           }
 
@@ -461,6 +481,9 @@
             if(this.arrastrar){
               var rect = canvas.getBoundingClientRect();
               this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+               for (var i = 0; i < drawnFiguresNivel2.length; i++) {
+            drawnFiguresNivel2[i].draw(); 
+          }
             }
           }
 
@@ -532,6 +555,9 @@
             if(this.arrastrar){
               var rect = canvas.getBoundingClientRect();
               this.setPos(e.clientX - rect.left, e.clientY - rect.top);
+               for (var i = 0; i < drawnFiguresNivel2.length; i++) {
+            drawnFiguresNivel2[i].draw(); 
+          }
             }
           }
 
