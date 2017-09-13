@@ -1,17 +1,9 @@
         //BUSCAR
         //TEMPORIZADOR
-        //HACER CLASES, PARA EL CODIGO REPETIDO
-        //HACER LOGICA PARA GANAR (si una figura es igual o aprox a otra, mando un
-          //  true, ver como mandar los true, y como se que figura hace eso, si esta
-          //todo en true llamo al panel de ganaste)
-        //BUSCAR PANELS DE GANASTE EN EL JUEGO
+        //ARREGLAR CODIGO REPETIDO
         //DIVIDIR EN NIVELES
         //IMAGENES EN CADA FIGURA
 
-        //ARREGLAR ERRORES--------------------
-        // ARRASTRAR EL TRIANGULO
-        //QUE ANDEN LOS COLORES EN LAS FIGURAS
-        //QUE NO SE VAYA EL AMARILLO CUANDO DEJO UNA FIGURA EN OTRO LUGAR
             
        /* let drawnFiguresNivel1 = []; 
         drawnFiguresNivel1.push(new Square (510, 20, 80, 80, "#FFFFFF"));
@@ -33,25 +25,34 @@
          */
 
         //Nivel 2 - 9 piezas
+        //FIGURAS ENCASTRABLES SIN DRAG
         
         let drawnFiguresNivel2 = []; 
-        drawnFiguresNivel2.push(new Square (800, 280, 80, 80, "#FFFFFF"));
-        drawnFiguresNivel2.push(new Square (510, 20, 80, 80, "#FFFFFF"));
-        drawnFiguresNivel2.push(new Circle(700, 60, 40, "#FFFFFF"));
-        drawnFiguresNivel2.push(new Circle(840, 200, 40, "#FFFFFF"));
-        drawnFiguresNivel2.push(new Triangle(500, 235, 80, "#FFFFFF"));
-        drawnFiguresNivel2.push(new Triangle(800, 100, 80, "#FFFFFF"));
-        drawnFiguresNivel2.push(new Rectangle(640, 160, 130, 75, "#FFFFFF"));
-        drawnFiguresNivel2.push(new Diamond(700, 260,  60, "#FFFFFF"));
-        drawnFiguresNivel2.push(new Parallelogram (510, 280, 45, "#FFFFFF"));
+        let drawnFiguresNivelSinDrag = []; 
+        drawnFiguresNivelSinDrag.push(new SquareSinDrag (800, 280, 80, 80, "#FFFFFF"));
+        drawnFiguresNivelSinDrag.push(new SquareSinDrag (510, 20, 80, 80, "#FFFFFF"));
+        drawnFiguresNivelSinDrag.push(new CircleSinDrag(700, 60, 40, "#FFFFFF"));
+        drawnFiguresNivelSinDrag.push(new CircleSinDrag(840, 200, 40, "#FFFFFF"));
+        drawnFiguresNivelSinDrag.push(new TriangleSinDrag(500, 235, 80, "#FFFFFF"));
+        drawnFiguresNivelSinDrag.push(new TriangleSinDrag(800, 100, 80, "#FFFFFF"));
+        drawnFiguresNivelSinDrag.push(new RectangleSinDrag(640, 160, 130, 75, "#FFFFFF"));
+        drawnFiguresNivelSinDrag.push(new DiamondSinDrag(700, 260,  60, "#FFFFFF"));
+        drawnFiguresNivelSinDrag.push(new ParallelogramSinDrag (510, 280, 45, "#FFFFFF"));
+
+        for (var i = 0; i < drawnFiguresNivelSinDrag.length; i++) {
+            drawnFiguresNivelSinDrag[i].draw();    
+         }
         //FIGURAS A ELEGIR Y ARRASTABLES
-        //en esta parte dibujar la misma la cantidad que la anterior, pero encima
+        //cambiar de lado las figuras repetidas
+        drawnFiguresNivel2.push(new Square (60, 130, 80, 80, '#FE2E2E'));
         drawnFiguresNivel2.push(new Square (60, 130, 80, 80, '#FE2E2E'));
         drawnFiguresNivel2.push(new Circle(100, 60, 40, "#00FF80"));
+        drawnFiguresNivel2.push(new Circle(100, 60, 40, "#00FF80"));
+        drawnFiguresNivel2.push(new Triangle(60, 350, 85, "#F7FE2E"));
         drawnFiguresNivel2.push(new Triangle(60, 350, 85, "#F7FE2E"));
         drawnFiguresNivel2.push(new Rectangle(200, 130, 130, 75, "#2E64FE"));
-        drawnFiguresNivel2.push(new Diamond(250, 250,  55,"#FE2E2E"));
-        drawnFiguresNivel2.push(new Parallelogram (250, 20, 40,"#FE2E2E"));
+        drawnFiguresNivel2.push(new Diamond(250, 250,  60,"#FE2E2E"));
+        drawnFiguresNivel2.push(new Parallelogram (250, 20, 45,"#FE2E2E"));
 
       
         for (var i = 0; i < drawnFiguresNivel2.length; i++) {
