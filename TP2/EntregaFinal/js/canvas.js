@@ -5,13 +5,14 @@
 
      //figuras sin drag
     function ganar(){ //VER SI ESTA BIEN
-      for (var i = 0; i < drawnFiguresNivel2.length; i++) {
-        if (drawnFiguresNivel2[i].encastre==true)return true;
+      for (var i = 0; i < drawnFigures.length; i++) {
+        if (drawnFigures[i].encastre==true)return true;
       }
     }
-    function intercambioFiguras(){
+    function panel(){
       if(ganar()==true){
-        //acca hago lo del panel
+        document.getElementById('panel').style.display = 'block';
+        canvas.style.display = 'none';
       }
     }
     function SquareSinDrag(paramPosX, paramPosY, paramX, paramY, color){
@@ -25,7 +26,7 @@
     }
 
     SquareSinDrag.prototype.draw =  function (){
-      ctx.fillStyle = this.color;
+      ctx.fillStyle = "red";
       ctx.beginPath();
       ctx.fillRect(this.posX, this.posY, this.xW, this.yH);
       ctx.lineWidth = 5;
@@ -45,7 +46,7 @@
 
     }
     CircleSinDrag.prototype.draw =  function (){
-      ctx.fillStyle = this.color;
+      ctx.fillStyle = "green";
       ctx.beginPath();
       ctx.arc(this.posX, this.posY, this.radio , 0, Math.PI*2);
       ctx.lineWidth = 5;
@@ -56,27 +57,6 @@
     }
 
 
-    function TriangleSinDrag(paramPosX, paramPosY, paramSideT, color){
-      this.posX = paramPosX;
-      this.posY = paramPosY;
-      this.sideT = paramSideT;
-      this.color = color;
-      this.tipo = 3;
-
-
-
-
-    }
-    TriangleSinDrag.prototype.draw =  function (){
-     ctx.fillStyle = this.color;
-     ctx.beginPath();
-     ctx.moveTo(this.posX, this.posY);
-     ctx.lineTo(this.posX+this.sideT , this.posY);
-     ctx.lineTo(this.posX+(this.sideT/2), this.posY-this.sideT);
-     ctx.lineTo(this.posX, this.posY); 
-     ctx.closePath();
-     ctx.stroke();
-   }
 
    function RectangleSinDrag(paramPosX, paramPosY, paramA, paramL, color){
     this.posX = paramPosX;
@@ -84,13 +64,13 @@
     this.widthRectangle = paramA;
     this.heightRectangle = paramL;
     this.color = color;
-    this.tipo = 4;
+    this.tipo = 3;
 
 
 
   }
   RectangleSinDrag.prototype.draw =  function (){
-    ctx.fillStyle = this.color;
+    ctx.fillStyle = "blue";
     ctx.beginPath();
     ctx.fillRect(this.posX, this.posY, this.widthRectangle, this.heightRectangle);
     ctx.lineWidth = 5;
@@ -104,14 +84,14 @@
     this.posY = paramPosY;
     this.sideD = paramSideD;
     this.color = color;
-    this.tipo = 5;
+    this.tipo = 4;
 
 
 
 
   }
   DiamondSinDrag.prototype.draw =  function (){
-   ctx.fillStyle = this.color;
+   ctx.fillStyle = "orange";
    ctx.beginPath();
    ctx.moveTo(this.posX, this.posY);
    ctx.lineTo(this.posX+this.sideD , this.posY+this.sideD);
@@ -120,13 +100,63 @@
    ctx.closePath();
    ctx.stroke();
  }
+ function HexagonSinDrag(paramPosX, paramPosY,  paramSideH ,color){
+  this.posX = paramPosX;
+  this.posY = paramPosY;
+  this.sideH = paramSideH;
+  this.color = color;
+  this.tipo = 5;
+ 
+}
+HexagonSinDrag.prototype.draw =  function (){
+  ctx.fillStyle = this.color;
+  let sideMulti = this.sideH*2;
+  let sideDiv = this.sideH/2;
+  ctx.beginPath();
+  ctx.moveTo(this.posX, this.posY);
+  ctx.lineTo(this.posX + this.sideH , this.posY);
+  ctx.lineTo(this.posX + this.sideH + sideDiv , this.posY + this.sideH);
+  ctx.lineTo(this.posX + this.sideH, this.posY  + sideMulti);
+  ctx.lineTo(this.posX, this.posY + sideMulti);
+  ctx.lineTo(this.posX - sideDiv , this.posY + this.sideH );
+  ctx.closePath();
+  ctx.stroke();
 
+
+}
+
+
+function PentagonSinDrag(paramPosX, paramPosY, paramSide ,color){
+  this.posX = paramPosX;
+  this.posY = paramPosY;
+  this.side = paramSide;
+  this.color = color;
+  this.tipo = 6;
+  
+
+
+}
+PentagonSinDrag.prototype.draw =  function (){
+  ctx.fillStyle = "pink";
+  let sideMulti = this.side*2;
+  let sideDiv = this.side/2;
+  ctx.beginPath();
+  ctx.moveTo(this.posX, this.posY);
+  ctx.lineTo(this.posX + this.side , this.posY + this.side);
+  ctx.lineTo(this.posX + sideDiv, this.posY + sideMulti );
+  ctx.lineTo(this.posX  ,  this.posY  + sideMulti);
+  ctx.lineTo(this.posX -sideDiv , this.posY + sideMulti);
+  ctx.lineTo(this.posX - this.side , this.posY + this.side );
+  ctx.closePath();
+  ctx.stroke();
+
+}
  function ParallelogramSinDrag(paramPosX, paramPosY, paramSideP, color ){
   this.posX = paramPosX;
   this.posY = paramPosY;
   this.sideP = paramSideP;
   this.color = color;
-  this.tipo = 6;
+  this.tipo = 7;
 }
 ParallelogramSinDrag.prototype.draw =  function (){
   ctx.fillStyle = this.color;
@@ -163,21 +193,21 @@ ParallelogramSinDrag.prototype.draw =  function (){
       });
       this.encastre = false;
       function encastre(){
-        for (var i = 0; i < drawnFiguresNivelSinDrag.length; i++) {
-          if((this.posX >= (drawnFiguresNivelSinDrag[i].posX)-10)&&
-            (this.posX <= (drawnFiguresNivelSinDrag[i].posX)+10) && 
-            (this.posY >= (drawnFiguresNivelSinDrag[i].posY)-10)&&
-            (this.posY <= (drawnFiguresNivelSinDrag[i].posY)+10)&&
-            (this.tipo == (drawnFiguresNivelSinDrag[i].tipo)));
+        for (var i = 0; i < drawnFiguresSinDrag.length; i++) {
+          if((this.posX >= (drawnFiguresSinDrag[i].posX)-10)&&
+            (this.posX <= (drawnFiguresSinDrag[i].posX)+10) && 
+            (this.posY >= (drawnFiguresSinDrag[i].posY)-10)&&
+            (this.posY <= (drawnFiguresSinDrag[i].posY)+10)&&
+            (this.tipo == (drawnFiguresSinDrag[i].tipo)));
             this.encastre = true;
-          this.posX=drawnFiguresNivelSinDrag[i].posX;
-          this.posY=drawnFiguresNivelSinDrag[i].posY;
-          drawnFiguresNivelSinDrag[i].arrastrar=false;
+          this.posX=drawnFiguresSinDrag[i].posX;
+          this.posY=drawnFiguresSinDrag[i].posY;
+          drawnFigures[i].arrastrar=false;
         }
       }
     }
     Square.prototype.draw =  function (){
-      ctx.fillStyle = this.color;
+      ctx.fillStyle = "red";
       ctx.beginPath();
       ctx.fillRect(this.posX, this.posY, this.xW, this.yH);
       ctx.lineWidth = 5;
@@ -244,22 +274,22 @@ ParallelogramSinDrag.prototype.draw =  function (){
       circulo.mouseUp(e);
     });
     function encastre(){
-      for (var i = 0; i < drawnFiguresNivelSinDrag.length; i++) {
-        if((this.posX >= (drawnFiguresNivelSinDrag[i].posX)-10)&&
-          (this.posX <= (drawnFiguresNivelSinDrag[i].posX)+10) && 
-          (this.posY >= (drawnFiguresNivelSinDrag[i].posY)-10)&&
-          (this.posY <= (drawnFiguresNivelSinDrag[i].posY)+10)&&
-          (this.tipo == (drawnFiguresNivelSinDrag[i].tipo)));
+      for (var i = 0; i < drawnFiguresSinDrag.length; i++) {
+        if((this.posX >= (drawnFiguresSinDrag[i].posX)-10)&&
+          (this.posX <= (drawnFiguresSinDrag[i].posX)+10) && 
+          (this.posY >= (drawnFiguresSinDrag[i].posY)-10)&&
+          (this.posY <= (drawnFiguresSinDrag[i].posY)+10)&&
+          (this.tipo == (drawnFiguresSinDrag[i].tipo)));
           this.encastre = true;
-        this.posX=drawnFiguresNivelSinDrag[i].posX;
-        this.posY=drawnFiguresNivelSinDrag[i].posY;
-        drawnFiguresNivelSinDrag[i].arrastrar=false;
+        this.posX=drawnFiguresSinDrag[i].posX;
+        this.posY=drawnFiguresSinDrag[i].posY;
+        drawnFiguresSinDrag[i].arrastrar=false;
           //redibujar el canvas sin esta figura draggeable
         }
       }
     }
     Circle.prototype.draw =  function (){
-      ctx.fillStyle = this.color;
+      ctx.fillStyle = "green";
       ctx.beginPath();
       ctx.arc(this.posX, this.posY, this.radio , 0, Math.PI*2);
       ctx.lineWidth = 5;
@@ -312,7 +342,7 @@ ParallelogramSinDrag.prototype.draw =  function (){
       this.sideT = paramSideT;
       this.color = color;
       let triangulo = this;
-      this.tipo = 3;
+      this.tipo = 8;
       this.encastre = false;
       canvas.addEventListener("mousedown", function (e) {
         triangulo.mouseDown(e);
@@ -324,19 +354,19 @@ ParallelogramSinDrag.prototype.draw =  function (){
         triangulo.mouseUp(e);
       });
       function encastre(){
-        for (var i = 0; i < drawnFiguresNivelSinDrag.length; i++) {
-          if((this.posX >= (drawnFiguresNivelSinDrag[i].posX)-10)&&
-            (this.posX <= (drawnFiguresNivelSinDrag[i].posX)+10) && 
-            (this.posY >= (drawnFiguresNivelSinDrag[i].posY)-10)&&
-            (this.posY <= (drawnFiguresNivelSinDrag[i].posY)+10)&&
-            (this.tipo == (drawnFiguresNivelSinDrag[i].tipo)));
-            this.encastre = true;
-          this.posX=drawnFiguresNivelSinDrag[i].posX;
-          this.posY=drawnFiguresNivelSinDrag[i].posY;
-          drawnFiguresNivelSinDrag[i].arrastrar=false;
+      for (var i = 0; i < drawnFiguresSinDrag.length; i++) {
+        if((this.posX >= (drawnFiguresSinDrag[i].posX)-10)&&
+          (this.posX <= (drawnFiguresSinDrag[i].posX)+10) && 
+          (this.posY >= (drawnFiguresSinDrag[i].posY)-10)&&
+          (this.posY <= (drawnFiguresSinDrag[i].posY)+10)&&
+          (this.tipo == (drawnFiguresSinDrag[i].tipo)));
+          this.encastre = true;
+        this.posX=drawnFiguresSinDrag[i].posX;
+        this.posY=drawnFiguresSinDrag[i].posY;
+        drawnFiguresSinDrag[i].arrastrar=false;
+          //redibujar el canvas sin esta figura draggeable
         }
       }
-
 
     }
     Triangle.prototype.draw =  function (){
@@ -396,7 +426,7 @@ function Rectangle(paramPosX, paramPosY, paramA, paramL, color){
   this.heightRectangle = paramL;
   this.color = color;
   let rectangle = this; 
-  this.tipo = 4;
+  this.tipo = 3;
   this.encastre = false;
   canvas.addEventListener("mousedown", function (e) {
     rectangle.mouseDown(e);
@@ -408,23 +438,24 @@ function Rectangle(paramPosX, paramPosY, paramA, paramL, color){
     rectangle.mouseUp(e);
   });
   function encastre(){
-    for (var i = 0; i < drawnFiguresNivelSinDrag.length; i++) {
-      if((this.posX >= (drawnFiguresNivelSinDrag[i].posX)-10)&&
-        (this.posX <= (drawnFiguresNivelSinDrag[i].posX)+10) && 
-        (this.posY >= (drawnFiguresNivelSinDrag[i].posY)-10)&&
-        (this.posY <= (drawnFiguresNivelSinDrag[i].posY)+10)&&
-        (this.tipo == (drawnFiguresNivelSinDrag[i].tipo)));
-        this.encastre = true;
-      this.posX=drawnFiguresNivelSinDrag[i].posX;
-      this.posY=drawnFiguresNivelSinDrag[i].posY;
-      drawnFiguresNivelSinDrag[i].arrastrar=false;
-    }
-  }
+      for (var i = 0; i < drawnFiguresSinDrag.length; i++) {
+        if((this.posX >= (drawnFiguresSinDrag[i].posX)-10)&&
+          (this.posX <= (drawnFiguresSinDrag[i].posX)+10) && 
+          (this.posY >= (drawnFiguresSinDrag[i].posY)-10)&&
+          (this.posY <= (drawnFiguresSinDrag[i].posY)+10)&&
+          (this.tipo == (drawnFiguresSinDrag[i].tipo)));
+          this.encastre = true;
+        this.posX=drawnFiguresSinDrag[i].posX;
+        this.posY=drawnFiguresSinDrag[i].posY;
+        drawnFiguresSinDrag[i].arrastrar=false;
+          //redibujar el canvas sin esta figura draggeable
+        }
+      }
 
 
 }
 Rectangle.prototype.draw =  function (){
-  ctx.fillStyle = this.color;
+  ctx.fillStyle = "blue";
   ctx.beginPath();
   ctx.fillRect(this.posX, this.posY, this.widthRectangle, this.heightRectangle);
   ctx.lineWidth = 5;
@@ -478,7 +509,7 @@ function Diamond(paramPosX, paramPosY,paramSideD, color){
   this.sideD = paramSideD;
   this.color = color;
   let diamond = this;
-  this.tipo = 5;
+  this.tipo = 4;
   this.encastre = false;
   canvas.addEventListener("mousedown", function (e) {
     diamond.mouseDown(e);
@@ -490,19 +521,19 @@ function Diamond(paramPosX, paramPosY,paramSideD, color){
     diamond.mouseUp(e);
   });
   function encastre(){
-    for (var i = 0; i < drawnFiguresNivelSinDrag.length; i++) {
-      if((this.posX >= (drawnFiguresNivelSinDrag[i].posX)-10)&&
-        (this.posX <= (drawnFiguresNivelSinDrag[i].posX)+10) && 
-        (this.posY >= (drawnFiguresNivelSinDrag[i].posY)-10)&&
-        (this.posY <= (drawnFiguresNivelSinDrag[i].posY)+10)&&
-        (this.tipo == (drawnFiguresNivelSinDrag[i].tipo)));
-       this.encastre = true;
-     this.posX=drawnFiguresNivelSinDrag[i].posX;
-     this.posY=drawnFiguresNivelSinDrag[i].posY;
-     drawnFiguresNivelSinDrag[i].arrastrar=false;
-   }
- }
-
+      for (var i = 0; i < drawnFiguresSinDrag.length; i++) {
+        if((this.posX >= (drawnFiguresSinDrag[i].posX)-10)&&
+          (this.posX <= (drawnFiguresSinDrag[i].posX)+10) && 
+          (this.posY >= (drawnFiguresSinDrag[i].posY)-10)&&
+          (this.posY <= (drawnFiguresSinDrag[i].posY)+10)&&
+          (this.tipo == (drawnFiguresSinDrag[i].tipo)));
+          this.encastre = true;
+        this.posX=drawnFiguresSinDrag[i].posX;
+        this.posY=drawnFiguresSinDrag[i].posY;
+        drawnFiguresSinDrag[i].arrastrar=false;
+          //redibujar el canvas sin esta figura draggeable
+        }
+      }
 
 }
 Diamond.prototype.draw =  function (){
@@ -561,7 +592,7 @@ function Hexagon(paramPosX, paramPosY,  paramSideH ,color){
   this.sideH = paramSideH;
   this.color = color;
   let hexagon = this;
-  this.tipo = 6;
+  this.tipo = 5;
   this.encastre = false;
   canvas.addEventListener("mousedown", function (e) {
     hexagon.mouseDown(e);
@@ -574,18 +605,19 @@ function Hexagon(paramPosX, paramPosY,  paramSideH ,color){
   });
 
   function encastre(){
-    for (var i = 0; i < drawnFiguresNivelSinDrag.length; i++) {
-      if((this.posX >= (drawnFiguresNivelSinDrag[i].posX)-10)&&
-        (this.posX <= (drawnFiguresNivelSinDrag[i].posX)+10) && 
-        (this.posY >= (drawnFiguresNivelSinDrag[i].posY)-10)&&
-        (this.posY <= (drawnFiguresNivelSinDrag[i].posY)+10)&&
-        (this.tipo == (drawnFiguresNivelSinDrag[i].tipo)));
-        this.encastre = true;
-      this.posX=drawnFiguresNivelSinDrag[i].posX;
-      this.posY=drawnFiguresNivelSinDrag[i].posY;
-      drawnFiguresNivelSinDrag[i].arrastrar=false;
-    }
-  }
+      for (var i = 0; i < drawnFiguresSinDrag.length; i++) {
+        if((this.posX >= (drawnFiguresSinDrag[i].posX)-10)&&
+          (this.posX <= (drawnFiguresSinDrag[i].posX)+10) && 
+          (this.posY >= (drawnFiguresSinDrag[i].posY)-10)&&
+          (this.posY <= (drawnFiguresSinDrag[i].posY)+10)&&
+          (this.tipo == (drawnFiguresSinDrag[i].tipo)));
+          this.encastre = true;
+        this.posX=drawnFiguresSinDrag[i].posX;
+        this.posY=drawnFiguresSinDrag[i].posY;
+        drawnFiguresSinDrag[i].arrastrar=false;
+          //redibujar el canvas sin esta figura draggeable
+        }
+      }
 }
 Hexagon.prototype.draw =  function (){
   ctx.fillStyle = this.color;
@@ -649,7 +681,7 @@ function Pentagon(paramPosX, paramPosY, paramSide ,color){
   this.side = paramSide;
   this.color = color;
   let pentagon = this;
-  this.tipo = 7;
+  this.tipo = 6;
   this.encastre = false;
   canvas.addEventListener("mousedown", function (e) {
     pentagon.mouseDown(e);
@@ -661,18 +693,19 @@ function Pentagon(paramPosX, paramPosY, paramSide ,color){
     pentagon.mouseUp(e);
   });
   function encastre(){
-    for (var i = 0; i < drawnFiguresNivelSinDrag.length; i++) {
-      if((this.posX >= (drawnFiguresNivelSinDrag[i].posX)-10)&&
-        (this.posX <= (drawnFiguresNivelSinDrag[i].posX)+10) && 
-        (this.posY >= (drawnFiguresNivelSinDrag[i].posY)-10)&&
-        (this.posY <= (drawnFiguresNivelSinDrag[i].posY)+10)&&
-        (this.tipo == (drawnFiguresNivelSinDrag[i].tipo)));
-       this.encastre = true;
-     this.posX=drawnFiguresNivelSinDrag[i].posX;
-     this.posY=drawnFiguresNivelSinDrag[i].posY;
-     drawnFiguresNivelSinDrag[i].arrastrar=false;
-   }
- }
+      for (var i = 0; i < drawnFiguresSinDrag.length; i++) {
+        if((this.posX >= (drawnFiguresSinDrag[i].posX)-10)&&
+          (this.posX <= (drawnFiguresSinDrag[i].posX)+10) && 
+          (this.posY >= (drawnFiguresSinDrag[i].posY)-10)&&
+          (this.posY <= (drawnFiguresSinDrag[i].posY)+10)&&
+          (this.tipo == (drawnFiguresSinDrag[i].tipo)));
+          this.encastre = true;
+        this.posX=drawnFiguresSinDrag[i].posX;
+        this.posY=drawnFiguresSinDrag[i].posY;
+        drawnFiguresSinDrag[i].arrastrar=false;
+          //redibujar el canvas sin esta figura draggeable
+        }
+      }
 
 
 }
@@ -739,7 +772,7 @@ function Parallelogram(paramPosX, paramPosY, paramSideP, color ){
   this.sideP = paramSideP;
   this.color = color;
   let parallelogram = this;
-  this.tipo = 8;
+  this.tipo = 7;
   this.encastre = false;
   canvas.addEventListener("mousedown", function (e) {
     parallelogram.mouseDown(e);
@@ -751,19 +784,19 @@ function Parallelogram(paramPosX, paramPosY, paramSideP, color ){
     parallelogram.mouseUp(e);
   });
   function encastre(){
-    for (var i = 0; i < drawnFiguresNivelSinDrag.length; i++) {
-      if((this.posX >= (drawnFiguresNivelSinDrag[i].posX)-10)&&
-        (this.posX <= (drawnFiguresNivelSinDrag[i].posX)+10) && 
-        (this.posY >= (drawnFiguresNivelSinDrag[i].posY)-10)&&
-        (this.posY <= (drawnFiguresNivelSinDrag[i].posY)+10)&&
-        (this.tipo == (drawnFiguresNivelSinDrag[i].tipo)));
-        this.encastre = true;
-      this.posX=drawnFiguresNivelSinDrag[i].posX;
-      this.posY=drawnFiguresNivelSinDrag[i].posY;
-      drawnFiguresNivelSinDrag[i].arrastrar=false;
-    }
-  }
-
+      for (var i = 0; i < drawnFiguresSinDrag.length; i++) {
+        if((this.posX >= (drawnFiguresSinDrag[i].posX)-10)&&
+          (this.posX <= (drawnFiguresSinDrag[i].posX)+10) && 
+          (this.posY >= (drawnFiguresSinDrag[i].posY)-10)&&
+          (this.posY <= (drawnFiguresSinDrag[i].posY)+10)&&
+          (this.tipo == (drawnFiguresSinDrag[i].tipo)));
+          this.encastre = true;
+        this.posX=drawnFiguresSinDrag[i].posX;
+        this.posY=drawnFiguresSinDrag[i].posY;
+        drawnFiguresSinDrag[i].arrastrar=false;
+          //redibujar el canvas sin esta figura draggeable
+        }
+      }
 
 }
 Parallelogram.prototype.draw =  function (){
@@ -828,11 +861,11 @@ function newCanvas(){
  ctx.fillStyle = "#FFFF00";
  ctx.fillRect(0, 0, canvas.width, canvas.height);
  
- for (var i = 0; i < drawnFiguresNivel2.length; i++) {
-  drawnFiguresNivel2[i].draw(); 
+ for (var i = 0; i < drawnFigures.length; i++) {
+  drawnFigures[i].draw(); 
 }
-for (var i = 0; i < drawnFiguresNivelSinDrag.length; i++) {
-  drawnFiguresNivelSinDrag[i].draw();    
+for (var i = 0; i < drawnFiguresSinDrag.length; i++) {
+  drawnFiguresSinDrag[i].draw();    
 }
 
 

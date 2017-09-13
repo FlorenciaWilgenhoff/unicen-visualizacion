@@ -40,19 +40,8 @@
           <a class="js-scroll-trigger" href="#about">About</a>
         </li>
         <li>
-          <a class="js-scroll-trigger" href="#services">Nuestros niveles</a>
+          <a class="js-scroll-trigger" href="#portfolio1">Juego</a>
         </li>
-        <li>
-          <a class="js-scroll-trigger" href="#portfolio1">Nivel 1</a>
-        </li>
-        <li>
-          <a class="js-scroll-trigger" href="#portfolio2">Nivel 2</a>
-        </li>
-        <li>
-          <a class="js-scroll-trigger" href="#portfolio3">Nivel 3</a>
-        </li>
-        <li>
-          <a class="js-scroll-trigger" href="#portfolio4">Nivel 4</a>
         </li>
         <li>
           <a class="js-scroll-trigger" href="#contact" onclick=$( "#menu-close").click();>Contact</a>
@@ -63,10 +52,9 @@
     <!-- Header -->
     <header class="header" id="top">
       <div class="text-vertical-center">
-        <h1>Bienvenido a Rompecabezas para niños</h1> <!--CAMBIAR COLOR DE LETRA Y TIPOGRAFIA -->
-        <h3></h3> <!--CAMBIAR FRASE--->
+        <h1>Bienvenido a Rompecabezas para niños</h1> 
         <br>
-        <a href="#services" class="btn btn-dark btn-lg js-scroll-trigger">Jugar</a>
+        <a href="#portfolio1" class="btn btn-dark btn-lg js-scroll-trigger">Jugar</a>
       </div>
     </header>
 
@@ -82,118 +70,19 @@
       <!-- /.container -->
     </section>
 
-    <!-- Services -->
-    <section id="services" class="services bg-primary text-white">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-lg-10 mx-auto">
-            <h2>Nuestros niveles</h2>
-            <hr class="small">
-            <div class="row">
-              <div class="col-md-3 col-sm-6">
-                <div class="service-item">
-                  <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-puzzle-piece fa-stack-1x text-primary"></i>
-                  </span>
-                  <h4>
-                    <strong>Nivel 1</strong>
-                  </h4>
-                  <p>En este nivel se puede encontrar un total de 6 piezas en el Rompecabezas.</p>
-                  <a href="#portfolio1" class="btn btn-light">Jugar Nivel 1</a>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <div class="service-item">
-                  <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-puzzle-piece fa-stack-1x text-primary"></i>
-                  </span>
-                  <h4>
-                    <strong>Nivel 2</strong>
-                  </h4>
-                  <p>En este nivel se puede encontrar un total de 9 piezas en el Rompecabezas.</p>
-                  <a href="#portfolio2" class="btn btn-light">Jugar Nivel 2</a>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <div class="service-item">
-                  <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-puzzle-piece fa-stack-1x text-primary"></i>
-                  </span>
-                  <h4>
-                    <strong>Nivel 3</strong>
-                  </h4>
-                  <p>En este nivel se puede encontrar un total de 12 piezas en el Rompecabezas.</p>
-                  <a href="#portfolio3" class="btn btn-light">Jugar Nivel 3</a>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <div class="service-item">
-                  <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-puzzle-piece fa-stack-1x text-primary"></i>
-                  </span>
-                  <h4>
-                    <strong>Nivel 4</strong>
-                  </h4>
-                  <p>En este nivel se puede encontrar un total de 14 piezas en el Rompecabezas.</p>
-                  <a href="#portfolio4" class="btn btn-light">Jugar Nivel 4</a>
-                </div>
-              </div>
-            </div>
-            <!-- /.row (nested) -->
-          </div>
-          <!-- /.col-lg-10 -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container -->
-    </section>
+    
 
-
-    <!-- Nivel 1 -->
-    <section id="portfolio1" class="portfolio">
-      <div class="container">
-        <div class="row">
-          <div class="card text-center">
-          <div class="card-header">
-            <h2>Nivel 1</h2>
-          </div>
-          <div class="card-block">
-          <div class="col-lg-10 mx-auto text-center">
-          </div>
-            <!--<canvas id="canvas" width="900" height="450" style="border:#000 1px;" class="img-fluid" />  -->
-            <!-- /.row (nested) -->
-            <div id="cronometro">
-              <div id="reloj">
-                0 00 00 00
-              </div>
-              <form name="cron" action="#">
-                <input type="button" value="Empezar" name="boton1"   />
-                <input type="button" value="Parar" name="boton2"  /><br/>
-              </form>
-            </div>
-
-          <!-- /.col-lg-10 -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container -->
-    </section>
-
-    <!-- Nivel 2 -->
-    <section id="portfolio2" class="portfolio">
+    <!-- Juego -->
+       <section id="portfolio1" class="portfolio">
       <div class="container">
         <div class="card text-center">
           <div class="card-header">
-            <h2>Nivel 2</h2>
+            <h2>Rompecabezas para niños</h2>
           </div>
           <div class="card-block">
           <div class="col-lg-10 mx-auto text-center">
           </div>
-            <canvas id="canvas" width="900" height="400" style="border:#000 1px;" class="img-fluid" /> 
+            <canvas id="canvas" width="900" height="600" style="border:#000 1px;" class="img-fluid" /> 
             <div class="panel panel-success">Ganaste! </div>
 
             <!-- /.row (nested) -->
@@ -207,51 +96,7 @@
       </div>
       <!-- /.container -->
     </section>
-
-    <!-- Nivel 3 -->
-    <section id="portfolio3" class="portfolio">
-      <div class="container">
-        <div class="row">
-          <div class="card text-center">
-          <div class="card-header">
-            <h2>Nivel 3</h2>
-          </div>
-          <div class="card-block">
-          <div class="col-lg-10 mx-auto text-center">
-          </div>
-            <canvas id="canvas" width="900" height="600" style="border:#000 1px;" class="img-fluid" /> 
-            <!-- /.row (nested) -->
-            <btn class="btn btn-dark timer ">Temporizador
-          <!-- /.col-lg-10 -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container -->
-    </section>
-
-    <!-- Nivel 4 -->
-    <section id="portfolio4" class="portfolio">
-      <div class="container">
-        <div class="row">
-          <div class="card text-center">
-          <div class="card-header">
-            <h2>Nivel 4</h2>
-          </div>
-          <div class="card-block">
-          <div class="col-lg-10 mx-auto text-center">
-          </div>
-            <canvas id="canvas" width="900" height="600" style="border:#000 1px;" class="img-fluid" /> 
-            <!-- /.row (nested) -->
-            <btn class="btn btn-dark">Temporizador
-          <!-- /.col-lg-10 -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container -->
-    </section>
-
-    
-    <!-- Footer -->
+     <!-- Footer -->
     <footer>
       <div class="container">
         <div class="row">
